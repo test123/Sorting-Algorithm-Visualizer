@@ -20,9 +20,11 @@ Choose function name from list of functions above (in all lower case and spaces 
 
 # How to contribute
 
-Add new sorting algorithms to `sorting.py`
-In your algorithms, pass an `Array` (defined in `sorting.py`) object, instead of a list
-Assume the call to be `sorting_algorithm(Array([1, 2, 3]))`, not `sorting_algorithm([1, 2, 3])`
+Add new sorting algorithms to `sorting.py`  
+In your algorithms, pass an `Array` (defined in `sorting.py`) object, instead of a list.  
+  
+The call to your sorting algorithm should be `sorting_algorithm(Array([1, 2, 3]))`, not `sorting_algorithm([1, 2, 3])`.  
+  
 Whenever you are swapping values, call `Array.swap`, and whenever you are setting a value, call `Array.set`.
 The length of the array can be found out using `Array.length`.
 
