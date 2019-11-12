@@ -1,6 +1,8 @@
 import sorting as s
 import numpy as np
 
+s.test = True
+
 
 def is_sorted(arr):
     return all(arr[i] <= arr[i+1] for i in range(len(arr)-1))
@@ -13,6 +15,6 @@ def test(sorting_function):
 
 
 functions = [s.bubble_sort, s.heap_sort, s.selection_sort,
-             s.insertion_sort, s.quick_sort]
+             s.insertion_sort, s.quick_sort, s.merge_sort]
 for function in functions:
     print('Testing:   ', function.__name__.ljust(16), test(function))

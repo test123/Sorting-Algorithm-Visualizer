@@ -1,19 +1,29 @@
 from time import sleep
 import visualizer as vs
 
+test = False
 
 class Array:
+
+    def set_all(self, values):
+        for i in range(len(self.values)):
+            self.values[i] = values[i]
+        
+        if not test:
+            vs.plot(self.values)
 
     def __init__(self, values):
         self.values = list(values)
 
     def swap(self, index1, index2):
         self.values[index2], self.values[index1] = self.values[index1], self.values[index2]
-        vs.plot(self.values)
+        if not test:
+            vs.plot(self.values)
 
     def set(self, index, num):
         self.values[index] = num
-        vs.plot(self.values)
+        if not test:
+            vs.plot(self.values)
 
     def getLen(self):
         return len(self.values)
@@ -138,17 +148,22 @@ def merge_sort(nums):  # n * logn
 
     # If the list is a single element, return it
     if nums.getLen() <= 1:
-        return nums
+        return nums.values
 
     # Use floor division to get midpoint, indices must be integers
     mid = nums.getLen() // 2
 
     # Sort and merge each half
-    left_list = merge_sort(nums.values[:mid])
-    right_list = merge_sort(nums.values[mid:])
+    left_list = merge_sort(Array(nums.values[:mid]))
+    right_list = merge_sort(Array(nums.values[mid:]))
+
+    nums.set_all(left_list + right_list)
 
     # Merge the sorted lists into a new one
-    return merge(left_list, right_list)
+    sorted_list = merge(left_list, right_list)
+    
+    nums.set_all(sorted_list)
+    return sorted_list
 
 
 def quick_sort(nums):  # n^2
