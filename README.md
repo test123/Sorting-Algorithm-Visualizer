@@ -18,6 +18,10 @@ Run
 
 Choose function name from list of functions above (in all lower case and spaces replaced by underscore).
 
+For example: 
+
+```python main.py quick_sort```
+
 # How to contribute
 
 Add new sorting algorithms to `sorting.py`  
