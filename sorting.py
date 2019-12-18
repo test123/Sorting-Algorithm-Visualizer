@@ -25,7 +25,7 @@ class Array:
         if not test:
             vs.plot(self.values)
 
-    def getLen(self):
+    def get_len(self):
         return len(self.values)
 
 
@@ -34,7 +34,7 @@ def bubble_sort(nums):  # n^2
     swapped = True
     while swapped:
         swapped = False
-        for i in range(nums.getLen() - 1):
+        for i in range(nums.get_len() - 1):
             if nums.values[i] > nums.values[i + 1]:
                 # Swap the elements
                 nums.swap(i, i + 1)
@@ -44,11 +44,11 @@ def bubble_sort(nums):  # n^2
 
 def selection_sort(nums):  # n^2
     # This value of i corresponds to how many values were sorted
-    for i in range(nums.getLen()):
+    for i in range(nums.get_len()):
         # We assume that the first item of the unsorted segment is the smallest
         lowest_value_index = i
         # This loop iterates over the unsorted items
-        for j in range(i + 1, nums.getLen()):
+        for j in range(i + 1, nums.get_len()):
             if nums.values[j] < nums.values[lowest_value_index]:
                 lowest_value_index = j
         # Swap values of the lowest unsorted element with the first unsorted
@@ -58,7 +58,7 @@ def selection_sort(nums):  # n^2
 
 def insertion_sort(nums):  # n^2
     # Start on the second element as we assume the first element is sorted
-    for i in range(1, nums.getLen()):
+    for i in range(1, nums.get_len()):
         item_to_insert = nums.values[i]
         # And keep a reference of the index of the previous element
         j = i - 1
@@ -94,7 +94,7 @@ def heap_sort(nums):  # n * logn
             # Heapify the new root element to ensure it's the largest
             heapify(nums, heap_size, largest)
 
-    n = nums.getLen()
+    n = nums.get_len()
 
     # Create a Max Heap from the list
     # The 2nd argument of range means we stop at the element before -1 i.e.
@@ -147,11 +147,11 @@ def merge_sort(nums):  # n * logn
         return sorted_list
 
     # If the list is a single element, return it
-    if nums.getLen() <= 1:
+    if nums.get_len() <= 1:
         return nums.values
 
     # Use floor division to get midpoint, indices must be integers
-    mid = nums.getLen() // 2
+    mid = nums.get_len() // 2
 
     # Sort and merge each half
     left_list = merge_sort(Array(nums.values[:mid]))
@@ -199,4 +199,4 @@ def quick_sort(nums):  # n^2
             _quick_sort(items, low, split_index)
             _quick_sort(items, split_index + 1, high)
 
-    _quick_sort(nums, 0, nums.getLen() - 1)
+    _quick_sort(nums, 0, nums.get_len() - 1)

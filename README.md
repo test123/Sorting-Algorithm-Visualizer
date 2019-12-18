@@ -2,35 +2,41 @@
 
 Visualizing sorting algorithms, using the matplotlib library.
 
-Algorithms covered so far:<br />
-Quick Sort<br />
-Bubble Sort<br />
-Selection Sort<br />
-Insertion Sort<br />
-Heap Sort<br />
-Merge Sort
+Algorithms covered so far: 
+
+| Name | Function Name |
+| - |:-: |
+| Quick Sort | quick_sort |
+| Bubble Sort | bubble_sort |
+| Selection Sort | selection_sort |
+| Insertion Sort | insertion_sort |
+| Heap Sort | heap_sort |
+| Merge Sort | merge_sort |
 
 # Usage:
+
+Install
+
+```pip install -r requirements.txt``` 
 
 Run
 
 ```python main.py function_name```
 
-Choose function name from list of functions above (in all lower case and spaces replaced by underscore).
+Pass function name as a command line argument from list of functions above
+(in all lower case and spaces replaced by underscore).
 
-For example: 
+**For example:** 
 
 ```python main.py quick_sort```
 
 # How to contribute
 
-Add new sorting algorithms to `sorting.py`  
-In your algorithms, pass an `Array` (defined in `sorting.py`) object, instead of a list.  
-  
-The call to your sorting algorithm should be `sorting_algorithm(Array([1, 2, 3]))`, not `sorting_algorithm([1, 2, 3])`.  
-  
-Whenever you are swapping values, call `Array.swap`, and whenever you are setting a value, call `Array.set`.
-The length of the array can be found out using `Array.length`.
+**If you want to add a new sorting algorithm:**
 
-Make sure you test your newly implemented algorithm by running `test.py` after appending it to the list of algorithms in `test.py`.
-
+1. Code the algorithm in ```sorting.py```.
+2. Name the function appropriately, like ```quick_sort```, ```bubble_sort```.
+3. While coding the function, **do not use python lists**. Instead, use an ```Array``` object. The ```Array``` class is defined in ```sorting.py```. (See already implemented algorithms, for your reference)
+4. The ```Array``` object has ```swap```, ```set```, ```get_len```, ```get``` methods implemented. Feel free to implement any more, additional methods, that you may see fit.
+5. Make sure you add the sorting algorithm to the Readme file!
+6. Make sure your newly implemented algorithm works, by running `test.py` after appending it to the list of algorithms in `test.py`.
