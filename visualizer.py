@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import sys
 
 
 def plot(arr):
@@ -7,10 +8,18 @@ def plot(arr):
     plt.pause(0.001)
 
 
+def on_close(event):
+    try:
+        sys.exit(0)
+    except:
+        pass
+
+
 def show():
     plt.show()
 
 
 fig, graph = plt.subplots()
+fig.canvas.mpl_connect('close_event', on_close)
 graph.yaxis.set_visible(False)
 graph.xaxis.set_visible(False)
