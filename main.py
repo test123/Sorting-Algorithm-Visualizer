@@ -11,7 +11,7 @@ def get_random_array(length):
     return n
 
 
-array_size = 100
+array_size = 50
 
 algorithms = [s.bubble_sort, s.heap_sort, s.selection_sort,
               s.insertion_sort, s.quick_sort, s.insertion_sort, s.merge_sort]

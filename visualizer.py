@@ -9,10 +9,8 @@ def plot(arr):
 
 
 def on_close(event):
-    try:
+    if not sys.argv[0] == 'test.py':
         sys.exit(0)
-    except:
-        pass
 
 
 def show():

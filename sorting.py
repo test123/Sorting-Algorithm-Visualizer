@@ -5,24 +5,35 @@ test = False
 
 class Array:
 
+    full_array = None
+
     def plot(self):
         if not test:
-            vs.plot(self.values)
+            vs.plot(Array.full_array)
 
     def set_all(self, values):
         for i in range(len(self.values)):
             self.values[i] = values[i]
+        for i in range(len(self.values)):
+            Array.full_array[self.lower_index + i] = values[i]
             self.plot()
 
-    def __init__(self, values):
+    def __init__(self, values, lower_index=0, higher_index=-1):
+        self.lower_index = lower_index
+        self.higher_index = len(values) if higher_index == -1 else higher_index
         self.values = list(values)
+
+        if Array.full_array == None:
+            Array.full_array = list(values)
 
     def swap(self, index1, index2):
         self.values[index2], self.values[index1] = self.values[index1], self.values[index2]
+        Array.full_array[self.lower_index + index2], Array.full_array[self.lower_index + index1] = Array.full_array[self.lower_index + index1], Array.full_array[self.lower_index + index2]
         self.plot()
 
     def set(self, index, num):
         self.values[index] = num
+        Array.full_array[self.lower_index + index] = num
         self.plot()
 
     def get_len(self):
@@ -110,13 +121,14 @@ def heap_sort(nums):  # n * logn
         heapify(nums, i, 0)
 
 
-def merge_sort(nums):  # n * logn
-
+def merge_sort(nums, lower_index=0, higher_index=-1):  # n * logn
+    if higher_index == -1:
+        higher_index = lower_index + nums.get_len()
     def merge(left_list, right_list):
         sorted_list = []
         left_list_index = right_list_index = 0
 
-        # We use the list lengths often, so its handy to make variables
+        # We use the list lengths often, so it's handy to make variables
         left_list_length, right_list_length = len(left_list), len(right_list)
 
         for _ in range(left_list_length + right_list_length):
@@ -154,8 +166,8 @@ def merge_sort(nums):  # n * logn
     mid = nums.get_len() // 2
 
     # Sort and merge each half
-    left_list = merge_sort(Array(nums.values[:mid]))
-    right_list = merge_sort(Array(nums.values[mid:]))
+    left_list = merge_sort(Array(nums.values[:mid], lower_index, mid))
+    right_list = merge_sort(Array(nums.values[mid:], mid, nums.get_len()), mid, nums.get_len())
 
     nums.set_all(left_list + right_list)
 
