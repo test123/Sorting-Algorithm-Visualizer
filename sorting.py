@@ -3,6 +3,7 @@ import visualizer as vs
 
 test = False
 
+
 class Array:
 
     full_array = None
@@ -18,17 +19,18 @@ class Array:
             Array.full_array[self.lower_index + i] = values[i]
             self.plot()
 
-    def __init__(self, values, lower_index=0, higher_index=-1):
+    def __init__(self, values, lower_index=0):
         self.lower_index = lower_index
-        self.higher_index = len(values) if higher_index == -1 else higher_index
         self.values = list(values)
 
         if Array.full_array == None:
             Array.full_array = list(values)
+            self.plot()
 
     def swap(self, index1, index2):
         self.values[index2], self.values[index1] = self.values[index1], self.values[index2]
-        Array.full_array[self.lower_index + index2], Array.full_array[self.lower_index + index1] = Array.full_array[self.lower_index + index1], Array.full_array[self.lower_index + index2]
+        Array.full_array[self.lower_index + index2], Array.full_array[self.lower_index +
+                                                                      index1] = Array.full_array[self.lower_index + index1], Array.full_array[self.lower_index + index2]
         self.plot()
 
     def set(self, index, num):
@@ -121,9 +123,7 @@ def heap_sort(nums):  # n * logn
         heapify(nums, i, 0)
 
 
-def merge_sort(nums, lower_index=0, higher_index=-1):  # n * logn
-    if higher_index == -1:
-        higher_index = lower_index + nums.get_len()
+def merge_sort(nums, lower_index=0):  # n * logn
     def merge(left_list, right_list):
         sorted_list = []
         left_list_index = right_list_index = 0
@@ -166,14 +166,14 @@ def merge_sort(nums, lower_index=0, higher_index=-1):  # n * logn
     mid = nums.get_len() // 2
 
     # Sort and merge each half
-    left_list = merge_sort(Array(nums.values[:mid], lower_index, mid))
-    right_list = merge_sort(Array(nums.values[mid:], mid, nums.get_len()), mid, nums.get_len())
+    left_list = merge_sort(Array(nums.values[:mid], lower_index))
+    right_list = merge_sort(Array(nums.values[mid:], mid), mid)
 
     nums.set_all(left_list + right_list)
 
     # Merge the sorted lists into a new one
     sorted_list = merge(left_list, right_list)
-    
+
     nums.set_all(sorted_list)
     return sorted_list
 
