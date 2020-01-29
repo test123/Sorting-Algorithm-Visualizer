@@ -23,6 +23,8 @@ Run
 
 ```python main.py function_name```
 
+
+
 Pass function name as a command line argument from list of functions above
 (in all lower case and spaces replaced by underscore).
 
@@ -40,3 +42,18 @@ Pass function name as a command line argument from list of functions above
 4. The ```Array``` object has ```swap```, ```set```, ```get_len```, ```get``` methods implemented. Feel free to implement any more, additional methods, that you may see fit.
 5. Make sure you add the sorting algorithm to the Readme file!
 6. Make sure your newly implemented algorithm works, by running `test.py` after appending it to the list of algorithms in `test.py`.
+
+
+
+sorting algorithm:
+ 
+    # Traverse through all array elements
+
+ 
+        # Last i elements are already in place
+        
+ 
+            # traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+           
