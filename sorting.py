@@ -222,7 +222,7 @@ def quick_sort(nums):  # n^2
   
 # A function to do counting sort of arr[] according to 
 # the digit represented by exp. 
-def countingSort(arr, exp1): 
+def counting_sort(arr, exp1): 
   
     n = len(arr) 
   
@@ -257,7 +257,7 @@ def countingSort(arr, exp1):
         arr[i] = output[i] 
   
 # Method to do Radix Sort 
-def radixSort(arr): 
+def radix_sort(arr): 
   
     # Find the maximum number to know number of digits 
     max1 = max(arr) 
@@ -267,6 +267,6 @@ def radixSort(arr):
     # where i is current digit number 
     exp = 1
     while max1/exp > 0: 
-        countingSort(arr,exp) 
+        counting_sort(arr,exp) 
         exp *= 10
   
