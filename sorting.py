@@ -38,6 +38,9 @@ class Array:
         Array.full_array[self.lower_index + index] = num
         self.plot()
 
+    def get(self, index):
+        return self.values[index]
+
     def get_len(self):
         return len(self.values)
 
