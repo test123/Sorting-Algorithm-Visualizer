@@ -13,6 +13,9 @@ Algorithms covered so far:
 | Heap Sort | heap_sort |
 | Merge Sort | merge_sort |
 
+#Adding counting sort | count_sort |
+
+
 # Usage:
 
 Install
