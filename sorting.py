@@ -11,7 +11,7 @@ class Array:
     def stack_it(self):
         to_stack  = np.array(self.values)
         if not np.array_equal(to_stack, self.pile[-1]):
-        self.pile = np.vstack((self.pile, np.array(self.values)))
+            self.pile = np.vstack((self.pile, np.array(self.values)))
         
     def set_all(self, values):
         for i in range(len(self.values)):
