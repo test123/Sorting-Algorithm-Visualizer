@@ -1,42 +1,45 @@
 from time import sleep
-import visualizer as vs
+import numpy as np
+
 
 test = False
-
 
 class Array:
 
     full_array = None
 
-    def plot(self):
-        if not test:
-            vs.plot(Array.full_array)
-
+    def stack_it(self):
+        to_stack  = np.array(self.values)
+        if not np.array_equal(to_stack, self.pile[-1]):
+        self.pile = np.vstack((self.pile, np.array(self.values)))
+        
     def set_all(self, values):
         for i in range(len(self.values)):
             self.values[i] = values[i]
+            self.stack_it()
         for i in range(len(self.values)):
             Array.full_array[self.lower_index + i] = values[i]
-            self.plot()
+            self.stack_it()
+            
 
     def __init__(self, values, lower_index=0):
         self.lower_index = lower_index
         self.values = list(values)
-
+        
+        self.pile = np.array(self.values)
         if Array.full_array == None:
             Array.full_array = list(values)
-            self.plot()
 
     def swap(self, index1, index2):
         self.values[index2], self.values[index1] = self.values[index1], self.values[index2]
         Array.full_array[self.lower_index + index2], Array.full_array[self.lower_index +
                                                                       index1] = Array.full_array[self.lower_index + index1], Array.full_array[self.lower_index + index2]
-        self.plot()
+        self.stack_it()
 
     def set(self, index, num):
         self.values[index] = num
         Array.full_array[self.lower_index + index] = num
-        self.plot()
+        self.stack_it()
 
     def get_len(self):
         return len(self.values)
