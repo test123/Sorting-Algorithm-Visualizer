@@ -31,4 +31,5 @@ else:
     algorithm = algorithms[0]
     arr = s.Array(get_random_array(array_size))
     algorithm(arr)
-    vs.show()
+    plotter = vs.Plotter(arr.pile, title=algorithm_name, repeat=True, interval=1)
+	plotter.plot()
