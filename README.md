@@ -4,7 +4,7 @@ Visualizing sorting algorithms, using the matplotlib library.
 
 Algorithms covered so far: 
 
-| Name | Function Name |
+| Name | Funct
 | - |:-: |
 | Quick Sort | quick_sort |
 | Bubble Sort | bubble_sort |
